@@ -8,7 +8,7 @@ Let's go through some quick symbology moves using raster and vector data types.
 Raster
 ********
 
-Remember that the class\  `QGis <http://doc.qgis.org/head/classQGis.html>`_ \references some global constants that represent basic vector data types. These data types can be used for comaprison like this::
+Remember that the class\  `QGis <http://doc.qgis.org/api/classQGis.html>`_ \references some global constants that represent basic vector data types. These data types can be used for comaprison like this::
 
     >>> myPoint = QgsGeometry.fromPoint(QgsPoint(-122,47))
     >>> myPoint
@@ -29,7 +29,7 @@ Remember that the class\  `QGis <http://doc.qgis.org/head/classQGis.html>`_ \ref
     True
 
 
-Raster data also has it's own global constants that represent raster data types (Color, Paletted, GrayOrUndefined, Multiband) as well as the differnt types of shading and drawing that can happen. These are defined in the\  `QgsRasterLayer class <http://doc.qgis.org/head/classQgsRasterLayer.html#37e287fd16e799bddcf0e5533de07c13>`_ \. To get an idea about what integer lookup each one represents we can do exactly what we did above::
+Raster data also has it's own global constants that represent raster data types (Color, Paletted, GrayOrUndefined, Multiband) as well as the differnt types of shading and drawing that can happen. These are defined in the\  `QgsRasterLayer class <http://doc.qgis.org/api/classQgsRasterLayer.html#37e287fd16e799bddcf0e5533de07c13>`_ \. To get an idea about what integer lookup each one represents we can do exactly what we did above::
 
     >>> # Here a couple raster types
     >>> QgsRasterLayer.Palette
@@ -47,7 +47,7 @@ Raster data also has it's own global constants that represent raster data types 
     >>> QgsRasterLayer.PseudoColorShader
     1
 
-When a raster layer is loaded into QGIS it gets a default\  `DrawingStyle <http://doc.qgis.org/head/classQgsRasterLayer.html#36796f1a303dac9848ba3dce3e5527dc>`_ \based on it's\  `LayerType <http://doc.qgis.org/head/classQgsRasterLayer.html#37e287fd16e799bddcf0e5533de07c13>`_ \.
+When a raster layer is loaded into QGIS it gets a default\  `DrawingStyle <http://doc.qgis.org/api/classQgsRasterLayer.html#36796f1a303dac9848ba3dce3e5527dc>`_ \based on it's\  `LayerType <http://doc.qgis.org/api/classQgsRasterLayer.html#37e287fd16e799bddcf0e5533de07c13>`_ \.
 
 \  **1.** \Let's see what kind of raster type and drawing style our raster layer has. Make sure you have reference to the raster layer first::
 

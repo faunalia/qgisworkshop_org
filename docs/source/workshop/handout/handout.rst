@@ -20,7 +20,7 @@ Return a reference to the selected layer in the table of contents::
 Using QgsMapCanvas.currentLayer()
 ***************************************
 
-Another common way of accessing the selected layer in the table of contents is to get at it using the\  `QgsMapCanvas <http://doc.qgis.org/head/classQgsMapCanvas.html>`_ \like so::
+Another common way of accessing the selected layer in the table of contents is to get at it using the\  `QgsMapCanvas <http://doc.qgis.org/api/classQgsMapCanvas.html>`_ \like so::
 
     >>> canvas = qgis.utils.iface.mapCanvas()
     >>> cLayer = canvas.currentLayer()

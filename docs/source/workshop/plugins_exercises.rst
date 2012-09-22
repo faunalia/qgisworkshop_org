@@ -31,7 +31,7 @@ The Tool Requirements
 Hints
 ***************
 
-* You will want to connect a custom function to the map canvas signal\  `xyCoordinates <http://doc.qgis.org/head/classQgsMapCanvas.html#bf90fbd211ea419ded7c934fd289f0ab>`_ \
+* You will want to connect a custom function to the map canvas signal\  `xyCoordinates <http://doc.qgis.org/api/classQgsMapCanvas.html#bf90fbd211ea419ded7c934fd289f0ab>`_ \
 
 * You can get raster values for each band like this::
 

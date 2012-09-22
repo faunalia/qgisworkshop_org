@@ -12,7 +12,7 @@ Event-driven design with the Qt library uses the concepts of signals and slots. 
 SIGNALS
 ********
 
-Qt objects (any descendent of QObject) has the ability to emit signals. The object emits signals whenever it feels like broadcasting an event of significance. For example, the designers of the\  ``QgsMapCanvas`` \class felt like it's important for a map canvas object to broadcast a QgsPoint when the mouse is hovering over it. The signal\  `xyCoordinates <http://doc.qgis.org/head/classQgsMapCanvas.html#bf90fbd211ea419ded7c934fd289f0ab>`_ \defines this signal. The signal function signature of\  ``xyCoordintes`` \looks like this::
+Qt objects (any descendent of QObject) has the ability to emit signals. The object emits signals whenever it feels like broadcasting an event of significance. For example, the designers of the\  ``QgsMapCanvas`` \class felt like it's important for a map canvas object to broadcast a QgsPoint when the mouse is hovering over it. The signal\  `xyCoordinates <http://doc.qgis.org/api/classQgsMapCanvas.html#bf90fbd211ea419ded7c934fd289f0ab>`_ \defines this signal. The signal function signature of\  ``xyCoordintes`` \looks like this::
 
     void QgsMapCanvas::xyCoordinates    (   const QgsPoint &    p    )
 

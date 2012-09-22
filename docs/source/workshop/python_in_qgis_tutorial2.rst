@@ -31,9 +31,9 @@ Setup
 Accessing Layers
 --------------------------
 
-.. note:: The hyperlinks that follow all reference the\  `QGIS API documentation <http://doc.qgis.org>`_ \. Click on them to view the classes and methods we are referencing below
+.. note:: The hyperlinks that follow all reference the\  `QGIS API documentation <http://doc.qgis.org/api>`_ \. Click on them to view the classes and methods we are referencing below
 
-There's a number of ways to access the layers in QGIS. Each way starts by first referencing the\  `QgisInterface class <http://doc.qgis.org/head/classQgisInterface.html>`_ \which is called\  **iface** \in the Python bindings. From the Python Console we access\  **iface** \by calling the following command::
+There's a number of ways to access the layers in QGIS. Each way starts by first referencing the\  `QgisInterface class <http://doc.qgis.org/api/classQgisInterface.html>`_ \which is called\  **iface** \in the Python bindings. From the Python Console we access\  **iface** \by calling the following command::
     
     >>> qgis.utils.iface
 
@@ -47,7 +47,7 @@ Running the above command prints out the actual name of the QGIS class we are de
 Method 1
 *********
 
-On the iface class is a useful function called\  `activeLayer() <http://doc.qgis.org/head/classQgisInterface.html#231f32fbf95004aebb067cb98f3a391c>`_ \that returns us a reference to the selected layer in the table of contents.
+On the iface class is a useful function called\  `activeLayer() <http://doc.qgis.org/api/classQgisInterface.html#231f32fbf95004aebb067cb98f3a391c>`_ \that returns us a reference to the selected layer in the table of contents.
 
 \  **1.** \Run the following command::
 
@@ -64,7 +64,7 @@ Depending on which layer is selected in the table of contents you will see eithe
 
 \  **3.** \How do you get an idea about what functions this Python object has available? There's really two ways:
 
-    \1) The more visually appealing way to browse class attributes is to access the\  `QGIS API documentation <http://doc.qgis.org>`_ \and search for the class you're working with.
+    \1) The more visually appealing way to browse class attributes is to access the\  `QGIS API documentation <http://doc.qgis.org/api>`_ \and search for the class you're working with.
 
     \2) The Pythonic way (though less visually appealing) is to run the following command on an object you want to know more about::
         
@@ -85,7 +85,7 @@ The pile of text printed out in the shell is hard to navigate. Above is an examp
 Method 2
 **********
 
-\  **1.** \Another common way of accessing the selected layer in the table of contents is to get at it using the\  `QgsMapCanvas <http://doc.qgis.org/head/classQgsMapCanvas.html>`_ \. The mapCanvas class has tons of useful functions::
+\  **1.** \Another common way of accessing the selected layer in the table of contents is to get at it using the\  `QgsMapCanvas <http://doc.qgis.org/api/classQgsMapCanvas.html>`_ \. The mapCanvas class has tons of useful functions::
 
     >>> canvas = qgis.utils.iface.mapCanvas()
     >>> cLayer = canvas.currentLayer()
@@ -120,7 +120,7 @@ Method 4
 
 It's also useful sometimes to access layers in the order they are stacked in the table of contents. Layers are stacked top-down and accessed through a zero-based index. That means the first layer (topmost layer) starts at index 0.
 
-\  **1.** \We access layers using the\  `QgsMapCanvas.layer() function <http://doc.qgis.org/head/classQgsMapCanvas.html#de2251f2227bc0f0efefd09810a193cd>`_ \and pass in a integer designating the index we want::
+\  **1.** \We access layers using the\  `QgsMapCanvas.layer() function <http://doc.qgis.org/api/classQgsMapCanvas.html#de2251f2227bc0f0efefd09810a193cd>`_ \and pass in a integer designating the index we want::
 
     >>> canvas.layer(0)
     <qgis.core.QgsVectorLayer object at 0x99eaeec>
@@ -131,9 +131,9 @@ It's also useful sometimes to access layers in the order they are stacked in the
 Other Excercises
 ********************
 
-- set the active layer using\  `qgis.utils.iface.setActiveLayer() <http://doc.qgis.org/head/classQgisInterface.html#c42281407013002b56ff7ed422c77336>`_
+- set the active layer using\  `qgis.utils.iface.setActiveLayer() <http://doc.qgis.org/api/classQgisInterface.html#c42281407013002b56ff7ed422c77336>`_
 
-- set the current layer using\  `qgis.utils.iface.mapCanvas().setCurrentLayer() <http://doc.qgis.org/head/classQgsMapCanvas.html#001c20fe97f844542895e718ee166926>`_ 
+- set the current layer using\  `qgis.utils.iface.mapCanvas().setCurrentLayer() <http://doc.qgis.org/api/classQgsMapCanvas.html#001c20fe97f844542895e718ee166926>`_ 
 
 - can you find the QgsMapLayer class in the documentation and find out how to get a layer's extent?
 
@@ -153,7 +153,7 @@ Maybe when you were looking at the QgisInterface class you noticed a couple addL
     >>> qgis.utils.iface.addRasterLayer("/home/qgis/natural_earth_50m/raster/shaded_relief/SR_50M/SR_50M.tif", "raster")
     <qgis.core.QgsRasterLayer object at 0xca0fe6c>
 
-The method\  `addVectorLayer <http://doc.qgis.org/head/classQgisInterface.html#39be50fe9974de17177861ad89e7f36e>`_ \takes three arguments:
+The method\  `addVectorLayer <http://doc.qgis.org/api/classQgisInterface.html#39be50fe9974de17177861ad89e7f36e>`_ \takes three arguments:
 
     - the first argument is the path to the data source -- the shapefile in our case
 
@@ -161,7 +161,7 @@ The method\  `addVectorLayer <http://doc.qgis.org/head/classQgisInterface.html#3
 
     - the third argument is the provider key. Basically, the function wants to know what driver will be used to read this data. For our purposes, "ogr" will be used most of the time with vector data 
 
-Notice that the\  `addRasterLayer <http://doc.qgis.org/head/classQgisInterface.html#808a34b507a8c4204d607a5857d62748>`_ \only takes two arguments -- the path and basename for the layer. 
+Notice that the\  `addRasterLayer <http://doc.qgis.org/api/classQgisInterface.html#808a34b507a8c4204d607a5857d62748>`_ \only takes two arguments -- the path and basename for the layer. 
 
 If you go look at the\  **addRasterLayer** \function definition in the link above you'll notice that there are two overloaded function definitions for adding rasters. One definition takes two arguments (the one we used). The other definition takes many more arguments.
 
@@ -170,7 +170,7 @@ Adding a PostGIS Layer
 
 You might be wondering how you handle adding data that exists in PostGIS. Luckily for you, we have PostGIS setup on the virtual machine with some vector layers already loaded.
 
-Accessing PostGIS vector data uses the same function as we did above --\  `addVectorLayer <http://doc.qgis.org/head/classQgisInterface.html#39be50fe9974de17177861ad89e7f36e>`_ \. However, specifying the path is a little different. 
+Accessing PostGIS vector data uses the same function as we did above --\  `addVectorLayer <http://doc.qgis.org/api/classQgisInterface.html#39be50fe9974de17177861ad89e7f36e>`_ \. However, specifying the path is a little different. 
 
 QGIS supports the idea of uniform resource identifiers (URIs) as data-source descriptions for handling input from databases, CSVs and GPX files. The URI we pass to the database includes such parameters as the database name, username, password and the port it runs on (among other parameters).
 
@@ -197,7 +197,7 @@ Accessing Vector Geometry
 
 Now it's time for the really fun stuff -- playing with geometry.
 
-The class\  `QgsGeometry <http://doc.qgis.org/head/classQgsGeometry.html>`_ \is one of the most important to study in the QGIS API. It contains the basic spatial predicates and operations for vector data that we are all used to.
+The class\  `QgsGeometry <http://doc.qgis.org/api/classQgsGeometry.html>`_ \is one of the most important to study in the QGIS API. It contains the basic spatial predicates and operations for vector data that we are all used to.
 
 For example, with the reference to the geometry of an object we can access these spatial operations (these are only some):
     - buffer
@@ -213,7 +213,7 @@ There's a number of ways to access layer features and an individual feature geom
 Method 1
 **********
 
-One way to access a layer's features is through the\  `QgsVectorDataProvider <http://doc.qgis.org/head/classQgsVectorDataProvider.html>`_ \class. You can get a reference to a data provider directly from your\  `QgsVectorLayer <http://doc.qgis.org/head/classQgsVectorLayer.html>`_ \class.
+One way to access a layer's features is through the\  `QgsVectorDataProvider <http://doc.qgis.org/api/classQgsVectorDataProvider.html>`_ \class. You can get a reference to a data provider directly from your\  `QgsVectorLayer <http://doc.qgis.org/api/classQgsVectorLayer.html>`_ \class.
 
 \  **1.** \First, remove all layers from QGIS
 
@@ -236,11 +236,11 @@ One way to access a layer's features is through the\  `QgsVectorDataProvider <ht
 
 If this was a vector layer from postgresql then "postgres" would be the\  ``provider.name()`` \returned.
 
-\  **5.** \One way you'll access vector layer features is through the data provider's\  `select() <http://doc.qgis.org/head/classQgsVectorDataProvider.html#ed7343c5ccea4d4fe795159eb4268b96>`_ \function::
+\  **5.** \One way you'll access vector layer features is through the data provider's\  `select() <http://doc.qgis.org/api/classQgsVectorDataProvider.html#ed7343c5ccea4d4fe795159eb4268b96>`_ \function::
 
     >>> provider.select()
 
-The\  ``select()`` \function reads the vector layer's attributes and geometry into memory so we can access them. If you take a look at the\  `select() API <http://doc.qgis.org/head/classQgsVectorDataProvider.html#ed7343c5ccea4d4fe795159eb4268b96>`_ \you'll notice that we can refine what we actually want to get back from the layer including only certain attributes.
+The\  ``select()`` \function reads the vector layer's attributes and geometry into memory so we can access them. If you take a look at the\  `select() API <http://doc.qgis.org/api/classQgsVectorDataProvider.html#ed7343c5ccea4d4fe795159eb4268b96>`_ \you'll notice that we can refine what we actually want to get back from the layer including only certain attributes.
 
 When we run\  ``select()`` \without any arguments passed we are only getting the default options. "Default" options in this case means::
 
@@ -265,7 +265,7 @@ To summarize, when we ran\  ``select()`` \we retrieved all feature geometries bu
 
 The above code retrieved the first feature from our data provider -- a feature with an featureID of 0.
 
-We then used the\  `QgsFeature.geometry() <http://doc.qgis.org/head/classQgsFeature.html#b0a934a1b173ce5ad8d13363c20ef3c8>`_ to get it's geometry. 
+We then used the\  `QgsFeature.geometry() <http://doc.qgis.org/api/classQgsFeature.html#b0a934a1b173ce5ad8d13363c20ef3c8>`_ to get it's geometry. 
 
 Lastly, we used the current layer reference to actually select that feature in QGIS.
 
@@ -286,7 +286,7 @@ Method 2
 
 Although we didn't use it above, many times you'll use\  ``QgsVectorDataProvider`` \with a\  ``while`` \statement to loop through all layer features. In these cases your workflow is probably requiring you to use all features. However, there are many workflows where you already have a feature ID. In these cases, you'll want to retrieve a single feature's attributes and geometry using something similar to the\  ``select()`` \function. Here's how we do that.
 
-The function\  `featureAtId() function <http://doc.qgis.org/head/classQgsVectorDataProvider.html#583a432e2e1046392abf79bf1e58f404>`_ \of the QgsVectorDataProvider class is just like the select statement with a few different arguments::
+The function\  `featureAtId() function <http://doc.qgis.org/api/classQgsVectorDataProvider.html#583a432e2e1046392abf79bf1e58f404>`_ \of the QgsVectorDataProvider class is just like the select statement with a few different arguments::
 
     ## Arguments
     - featureID -- the feature id you want to retrieve
@@ -330,9 +330,9 @@ This geometry is valid, not empty and looks to be a simple Polygon (as opposed t
     
 Note a couple things. Geometry types return an integer (essentially a lookup) that details what geometry they are. There are two ways to cross-reference this geometry type:
 
-    \A. Above we use\  `QGis.WkbType() function <http://doc.qgis.org/head/classQGis.html#8da456870e1caec209d8ba7502cceff7>`_ \to compare well-known binary types.
+    \A. Above we use\  `QGis.WkbType() function <http://doc.qgis.org/api/classQGis.html#8da456870e1caec209d8ba7502cceff7>`_ \to compare well-known binary types.
 
-    \B. Or we can use\  `QGis.type() function <http://doc.qgis.org/head/classQGis.html#09947eb19394302eeeed44d3e81dd74b>`_ \to compare to some basic typing::
+    \B. Or we can use\  `QGis.type() function <http://doc.qgis.org/api/classQGis.html#09947eb19394302eeeed44d3e81dd74b>`_ \to compare to some basic typing::
 
         >>> feat.geometry().type()
         2
@@ -395,7 +395,7 @@ Using our\  ``50m_admin_0_countries.shp`` \layer:
     >>> type(columns)
     <type 'dict'>
 
-\  **3.** \Remember that a Python dictionary data structure has a unique set of keys that point to corresponding values. The\  ``provider.fields()`` \function returns us the 0-based positional index of column objects from left-to-right. That means the left-most column (or field) starts at 0. Each integer index points to a\  `QgsField object <http://doc.qgis.org/head/classQgsField.html>`_ \for reference::
+\  **3.** \Remember that a Python dictionary data structure has a unique set of keys that point to corresponding values. The\  ``provider.fields()`` \function returns us the 0-based positional index of column objects from left-to-right. That means the left-most column (or field) starts at 0. Each integer index points to a\  `QgsField object <http://doc.qgis.org/api/classQgsField.html>`_ \for reference::
 
     >>> columns[0]
     <qgis.core.QgsField object at 0xd8df66c>
@@ -518,7 +518,7 @@ The example below reviews how to retrieve features and also adds the necessary s
 Raster
 *********
 
-In this next example we'll be querying raster cell values with QgsPoints using the\  `QgsRasterLayer.identify() function <http://doc.qgis.org/head/classQgsRasterLayer.html#4bcb29bba8fc0fca1e0bed41b6a0ee9b>`_ \. Although the C++ API shows the identify() function taking two arguments the Python bindings really only need a QgsPoint() to be passed as an argument.
+In this next example we'll be querying raster cell values with QgsPoints using the\  `QgsRasterLayer.identify() function <http://doc.qgis.org/api/classQgsRasterLayer.html#4bcb29bba8fc0fca1e0bed41b6a0ee9b>`_ \. Although the C++ API shows the identify() function taking two arguments the Python bindings really only need a QgsPoint() to be passed as an argument.
 
 
 \  **1.** \Load the following shaded relief into QGIS::
@@ -540,7 +540,7 @@ In this next example we'll be querying raster cell values with QgsPoints using t
     >>> rLayer.name()
     PyQt4.QtCore.QString(u'SR_50M')
 
-\  **4.** \The\  `QgsRasterLayer.identify() function <http://doc.qgis.org/head/classQgsRasterLayer.html#4bcb29bba8fc0fca1e0bed41b6a0ee9b>`_ \returns a boolean True or False to indicate whether or not the identify worked. The data is returned in a dictionary with the band number as a key and the value for that band number as a value::
+\  **4.** \The\  `QgsRasterLayer.identify() function <http://doc.qgis.org/api/classQgsRasterLayer.html#4bcb29bba8fc0fca1e0bed41b6a0ee9b>`_ \returns a boolean True or False to indicate whether or not the identify worked. The data is returned in a dictionary with the band number as a key and the value for that band number as a value::
 
     >>> rLayer.identify(Assam)
     (True, {PyQt4.QtCore.QString(u'Band 1'): PyQt4.QtCore.QString(u'218')})
