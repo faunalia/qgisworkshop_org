@@ -19,8 +19,8 @@ Introduction - Tools
 
     pyqt
 
-1st Hour - Exploring how Python can be used in QGIS
----------------------------------------------------
+How Python can be used in QGIS
+----------------------------------------
 
 .. toctree::
     :maxdepth: 2
@@ -33,8 +33,8 @@ Introduction - Tools
     
     python_in_qgis_exercises
 
-2nd Hour - Building Python Plugins
-----------------------------------
+Building Python Plugins
+-----------------------
 
 .. toctree::
     :maxdepth: 2
@@ -43,32 +43,31 @@ Introduction - Tools
 
     plugins_tutorial
 
-    plugins_exercises    
+    plugins_exercises
 
-3rd Hour - Event-Driven Notes / Debugging / Plugin Repositories
----------------------------------------------------------------
+Advanced Plugin Development
+---------------------------
 
 .. toctree::
     :maxdepth: 2
 
     event_driven_plugins
 
-    debug
+    advanced_intro
 
-    repositories
+    advanced_tutorial
 
-Workshop Hard Copy Handout
---------------------------
+    advanced_tutorial2
+
+    advanced_exercises
+
+Debugging / Plugin Repositories
+-------------------------------
 
 .. toctree::
     :maxdepth: 2
 
-    handout/handout.rst
+    debug
 
-TimeLine
---------
+    repositories
 
-.. toctree::
-    :maxdepth: 1
-    
-    workshop_timeline

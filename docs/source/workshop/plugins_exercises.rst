@@ -2,7 +2,7 @@
 Exercises
 =============================
 
-GOAL: On-the-Fly Raster Value Emitter
+1) GOAL: On-the-Fly Raster Value Emitter
 --------------------------------------------------------
 
 In this exercise you build a plugin from start to finish using Plugin Builder . The goal will be to create a simple (maybe even crude) raster value display tool. The purpose is for you to figure out the programmatic steps based on a few clues. This exercise has a\  **starter** \and a\  **advanced** \component
@@ -56,4 +56,48 @@ To get a visual idea about how simple my tool was, here's a picture:
 .. image:: ../_static/raster_value_final.png
     :scale: 100%
     :align: center
+
+
+2) GOAL: Chainage distance nodes plugin
+--------------------------------------------------------
+
+In this exercise you build a plugin that uses the\  `QgsGeometry <http://qgis.org/api/classQgsGeometry.html>`_ \functions. The goal will be to create a simple plugin that generates points along a line at supplied distance, then store them in a temporary layer.
+The plugin has to work on the selected lines of the active vector layer.
+
+.. note:: You need QGis > 1.8 as it defines the\  ``QgsGeometry.interpolate()`` \function, otherwise you need to create a function that returns a point along a line at a given distance.
+
+Hints
+*************************
+
+* To create a temporary layer you can use the so called\  **memory provider** \.
+
+The following example shows as to create and populate a\  `memory layer` \:
+::
+    # create a temporary point layer and load it into QGis
+    layer = QgsVectorLayer("Point", "layer_name", "memory")
+    QgsMapLayerRegistry.instance().addMapLayer(layer)
+
+    # start editing the layer
+    layer.startEditing()
+
+    # add an attribute
+    layer.addAttribute( QgsField("foo", QVariant.Int) )
+
+    # create a feature and populate it with a point geometry and a value for the foo attribute
+    f = QgsFeature()
+    f.setGeometry(QgsGeometry.fromPoint(QgsPoint(0,0)))
+    f.setAttributeMap( { 0 : 2 } )
+    # add the feature to the layer
+    layer.addFeature( f )
+
+    # finish editing
+    layer.commitChanges()
+
+
+* In the QGis > 1.8 there's a new method on\  ``QgsGeometry`` \class called\  `interpolate <http://qgis.org/api/classQgsGeometry.html#a8c3bb1b01d941219f2321e6c6c3db7e1>`_ \. This method takes as argument a\  `distance` \and returns a point along the line (the geometry you're calling the function on) at that distance.
+
+Solution
+************
+
+One possible solution can be found\  `here <../_static/chainage_dist_nodes_example4_solution.py>`_ \.
 

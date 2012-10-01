@@ -163,7 +163,7 @@ The method\  `addVectorLayer <http://doc.qgis.org/api/classQgisInterface.html#39
 
 Notice that the\  `addRasterLayer <http://doc.qgis.org/api/classQgisInterface.html#808a34b507a8c4204d607a5857d62748>`_ \only takes two arguments -- the path and basename for the layer. 
 
-If you go look at the\  **addRasterLayer** \function definition in the link above you'll notice that there are two overloaded function definitions for adding rasters. One definition takes two arguments (the one we used). The other definition takes many more arguments.
+If you go look at the\  **addRasterLayer** \function definition in the link above you'll notice that there are two overloaded function definitions for adding rasters. One definition takes two arguments (the one we used). The other definition takes three arguments and it's available in QGis > 1.8 (the third argument is the provider key, like the\  **addVectorLayer** \function above) though in the previous versions there's an overloaded function definition which takes many more arguments -- see\  `addRasterLayer (QGis <= 1.8) <http://doc.qgis.org/api/1.8/classQgisInterface.html#a593d676305bc27a5d6f2a27a6ad9f34e>`_ \.
 
 Adding a PostGIS Layer
 ***********************

@@ -112,7 +112,7 @@ The tool we're going to build will be do a few basic things:
      2. The tool will select any vector features that intersect with that point 
      3. The tool will have the option of being active or inactive using a checkbox setting.
 
-.. note:: This tool will work the exact same way that the current Select Single Feature tool works in QGIS. The purpose is to illustrate the steps in fleshing out a plugin. There are more practical excercises at the end of this tutorial that will work your fu.
+.. note:: This tool will work the exact same way that the current Select Single Feature tool works in QGIS. The purpose is to illustrate the steps in fleshing out a plugin. There are more practical excercises at the end of this tutorial.
 
 We can tackle the implementation tasks one at a time:
 
