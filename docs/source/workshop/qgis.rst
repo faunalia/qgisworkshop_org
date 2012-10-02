@@ -17,7 +17,7 @@ It became an incubator project of the Open Source Geospatial Foundation (OSGeo) 
 Project Layout
 --------------
 
-Quantum GIS is a community driven project. The web site, the source code (SVN), the bug tracker and the mailing lists are hosted and partly maintained at OSGeo.org. The work of the QGIS project is managed by a Project Steering Committee (PSC) made up of an  international team of developers and GIS users who each have a specific area of responsibility. The steering committee  is divided into four basic roles: Development, Release Management, Community Resources and Finance & Marketing. 
+Quantum GIS is a community driven project. The web site, the source code, the bug tracker and the mailing lists are hosted and partly maintained at OSGeo.org. The work of the QGIS project is managed by a Project Steering Committee (PSC) made up of an  international team of developers and GIS users who each have a specific area of responsibility. The steering committee  is divided into four basic roles: Development, Release Management, Community Resources and Finance & Marketing. 
 
 Contributions in the form of code contributions, bug fixes, bug reports, contributed documentation, advocacy and supporting other users on our mailing lists and the QGIS Forum. If you are interested in actively supporting the project, you can find more information under the development menu and on the QGIS Wiki. The project also accespts financial contributions in the form of sponsoring and funding.
 
