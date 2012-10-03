@@ -5,7 +5,7 @@ QT
 What it is
 ----------
 
-Qt (pronounced:\  *cute* \) is an open-source application framework (a set of tools) developed by Nokia for building graphical user interfaces (GUIs) and software. You've probably worked with Qt designed software if you've touched these programs: Google Earth, Virtual Box, Skype, Autodesk or Android smartphones. QGIS is also built on Qt -- that's why we're here.
+Qt (pronounced:\  *cute* \) is an open-source application framework (a set of tools) developed by Trolltech for building graphical user interfaces (GUIs) and software. You've probably worked with Qt designed software if you've touched these programs: Google Earth, Virtual Box, Skype, Autodesk or Android smartphones. QGIS is also built on Qt -- that's why we're here.
 
 The goal behind using an application framework like Qt is that it helps speed up the application development cycle. 
 
