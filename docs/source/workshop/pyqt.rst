@@ -10,7 +10,7 @@ PyQt refers to the Python bindings that wrap the C++ Qt libraries. That means we
 How it provided the idea behind PyQGIS
 --------------------------------------
 
-Using the PyQt wrappers to access QGIS libraries was a pracitical solution because QGIS was already built on top of Qt libraries. According to the\  `PyQGIS cookbook <http://www.qgis.org/pyqgis-cookbook/intro.html#python-console>`_ \, another reason for PyQt seems to be Python's immense popularity.
+Using the PyQt wrappers to access QGIS libraries was a practical solution because QGIS was already built on top of Qt libraries. According to the\  `PyQGIS cookbook <http://www.qgis.org/pyqgis-cookbook/intro.html#python-console>`_ \, another reason for PyQt seems to be Python's immense popularity.
 
 Examples
 ---------
