@@ -14,8 +14,3 @@ C++
 
 Qt software is built using the C++ language, though other language bindings exist. The framework supports a number of C++ compilers from the GNU Compiler Collection (GCC) to those in the Virtual Studio suite. It is therefore a framework that can be used to build applications on many different operating systems (cross-platform). 
 
-Nokia
------
-
-Nokia Corporation, the company that actively controls the development of Qt, is a global communication firm based in Finland. Nokia has many well-known subsidiaries, one of which is Navteq. 
-
