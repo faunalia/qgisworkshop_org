@@ -106,7 +106,7 @@ The number in PyQt4 refers to the version we are working with and we are importi
 
 Note that the above Python class is defining our dialog user interface. The following class function is building out our user interface with the buttons and comboboxes that were specificied in the XML.
 
-Now let's jump ahead breifly to peek at some PyQGIS commands (we'll go more in depth later on this topic). What's interesting here is that we'll see PyQt objects at work in the background -- afterall, PyQGIS is build on PyQT bindings. This code is using the Python console to access the selected layer in my table of contents::
+Now let's jump ahead briefly to peek at some PyQGIS commands (we'll go more in depth later on this topic). What's interesting here is that we'll see PyQt objects at work in the background -- afterall, PyQGIS is build on PyQT bindings. This code is using the Python console to access the selected layer in my table of contents::
 
     >>> layer = qgis.utils.iface.activeLayer()
     >>> layer.getLayerID()
@@ -115,18 +115,24 @@ Now let's jump ahead breifly to peek at some PyQGIS commands (we'll go more in d
     144L
     >>> layer.srs()
     <qgis.core.QgsCoordinateReferenceSystem object at 0x3d10b78>
+    layer.crs().epsg()
+    3003L
+    layer.crs().authid()
+    PyQt4.QtCore.QString(u'EPSG:3003')
     >>> layer.source()
     PyQt4.QtCore.QString(u'/home/gcorradini/DATA/SHAPES/world_borders/TM_WORLD_BORDERS-0.3_900913.shp')
-    >>> layer.setTransparency(50)
     >>> layer.wkbType()
     3
     >>> # 3 == MultiPolygon type
     ... 
+    The list of the types may be found in http://doc.qgis.org/api/classQGis.html
+
     >>> layer.name()
     PyQt4.QtCore.QString(u'TM_WORLD_BORDERS-0.3_900913')
 
 See all those\  ``PyQt4.QtCore.QString`` \data types in action? This is grabbing the active layer in the table of contents (active meaning selected layer). It then prints out it's layerID, feature count, spatial reference system, source path and well-known-binary type. This is only a fraction of the power we have when accessing our QGIS data layers. 
 
+To get help
 
-
-
+    >>> help(alayer.srs) #all the info about the function srs
+    >>> dir(alayer.srs()) #only the methods present in the object returned by srs
