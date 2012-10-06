@@ -476,27 +476,27 @@ The take home point is that the QgsField object gives us the names and data type
 
 The example below reviews how to retrieve features and also adds the necessary steps to select only certain attributes using the\  ``dataProvider.select() function`` \. This time however we will be passing in\  **ALL** \the\  ``select()`` \function arguments. Notes on each step are included with the code below::
 
-    # Get refs
-cLayer = qgis.utils.iface.activeLayer()
-provider = cLayer.dataProvider()
-# Create an empty list that will hold the column indexes for the columns we are interested in 
-selectList = []
-# For each column name we are interested in retreiving get its index and add it to the above selectList
-for column in ['PROVINCIA', 'ETTARI']:
-	selectList.append(provider.fieldNameIndex(column))
+	    # Get refs
+	cLayer = qgis.utils.iface.activeLayer()
+	provider = cLayer.dataProvider()
+	# Create an empty list that will hold the column indexes for the columns we are interested in 
+	selectList = []
+	# For each column name we are interested in retreiving get its index and add it to the above selectList
+	for column in ['PROVINCIA', 'ETTARI']:
+		selectList.append(provider.fieldNameIndex(column))
 
-# Create a bounding box rectangle that we will use as a filter to only get features that intersect with it
-rect = QgsRectangle(QgsPoint(1000000,1000000),QgsPoint(1650000,4820000))
-# The infamous select statement that queries our vector layer for all geometry, attributes indexes we passed and only the features that intersect our QgsRectangle
-provider.select(selectList, rect, True, False)
-feat = QgsFeature()
-# walk through each feature of our select statement and get the attributes
-while provider.nextFeature(feat):
-	# we get our dictionary of attribute index keys pointing to field values for this feature
-	attrs = feat.attributeMap()
-	# for each feature's attributes print out the value
-	for key, value in attrs.items():
-		print value.toString()
+	# Create a bounding box rectangle that we will use as a filter to only get features that intersect with it
+	rect = QgsRectangle(QgsPoint(1000000,1000000),QgsPoint(1650000,4820000))
+	# The infamous select statement that queries our vector layer for all geometry, attributes indexes we passed and only the features that intersect our QgsRectangle
+	provider.select(selectList, rect, True, False)
+	feat = QgsFeature()
+	# walk through each feature of our select statement and get the attributes
+	while provider.nextFeature(feat):
+		# we get our dictionary of attribute index keys pointing to field values for this feature
+		attrs = feat.attributeMap()
+		# for each feature's attributes print out the value
+		for key, value in attrs.items():
+			print value.toString()
 
 \  **9.** \This next example is a little harder to understand. The point is to show you how to create dictionaries. We're going to create a table data structure -- a Python dictionary that represents a table in a database. The table is a dictionary where the keys are the featureIDs for each feature and the values will be nested dictionaries that have keys with column names and values with the column value. Reworking the above example gives us::
 
