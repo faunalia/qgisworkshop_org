@@ -125,14 +125,14 @@ Now let's jump ahead briefly to peek at some PyQGIS commands (we'll go more in d
     3
     >>> # 3 == MultiPolygon type
     ... 
-    The list of the types may be found in http://doc.qgis.org/api/classQGis.html
+    >>> # The list of the types may be found in http://doc.qgis.org/api/classQGis.html
 
     >>> layer.name()
     PyQt4.QtCore.QString(u'TM_WORLD_BORDERS-0.3_900913')
 
 See all those\  ``PyQt4.QtCore.QString`` \data types in action? This is grabbing the active layer in the table of contents (active meaning selected layer). It then prints out it's layerID, feature count, spatial reference system, source path and well-known-binary type. This is only a fraction of the power we have when accessing our QGIS data layers. 
 
-To get help
+To get help:
 
-    >>> help(alayer.srs) #all the info about the function srs
-    >>> dir(alayer.srs()) #only the methods present in the object returned by srs
+    >>> help(layer.srs) #all the info about the function srs
+    >>> dir(layer.srs()) #only the methods present in the object returned by srs
