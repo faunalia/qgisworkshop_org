@@ -26,7 +26,7 @@ We'll be focusing on using the installing plugins as well as using the Python co
 QGIS Plugins
 ------------------------------
 
-From within QGIS one can install contributed plugins from many sources, both public and provate.
+From within QGIS one can install contributed plugins from many sources, both public and private.
 
 The tutorial #1 that follows walks through the basics of adding plugin repositories and plugins themselves to QGIS.
 

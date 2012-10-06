@@ -347,7 +347,7 @@ Note a couple things. Geometry types return an integer (essentially a lookup) th
     >>> buff_geom.area()
     430.95305806853509
 
-We buffered our polygon by 12 degrees. We can see this created more vetices in the polygon list. Printing out the geometry also verifies that we expanded this polygon. Just to be sure::
+We buffered our polygon by 12 degrees. We can see this created more vertices in the polygon list. Printing out the geometry also verifies that we expanded this polygon. Just to be sure::
 
     >>> buff_geom.area() > feat.geometry().area()
     True
@@ -381,7 +381,6 @@ Using our\  ``50m_admin_0_countries.shp`` \layer:
 
 \  **1.** \Get the data provider for this shapefile::
 
-    >>> provider = aLayer.dataProvider()
     >>> aLayer = qgis.utils.iface.activeLayer()
     >>> provider = aLayer.dataProvider()
     >>> aLayer.name()
@@ -425,6 +424,8 @@ The above isn't very useful output yet. To get useful column output we need to a
     8 = <qgis.core.QgsField object at 0xd8df4ac>
     
     # TRUNCATED OUTPUT
+    >>> for i in columns:
+    >>>   print columns[i].name(),  '->', columns[i].typeName()
 
 \  **6.** \Now let's get some meaningful output from the QgsField object::
  
@@ -448,6 +449,8 @@ The above isn't very useful output yet. To get useful column output we need to a
     15 = LOCAL_LNG
 
     # TRUNCATED OUTPUT 
+    # or:
+   >>>> for key,value in columns.items(): print key,value.name()
 
 \  **7.** \We can add other QgsField attributes to the iteration above::
 
@@ -474,27 +477,26 @@ The take home point is that the QgsField object gives us the names and data type
 The example below reviews how to retrieve features and also adds the necessary steps to select only certain attributes using the\  ``dataProvider.select() function`` \. This time however we will be passing in\  **ALL** \the\  ``select()`` \function arguments. Notes on each step are included with the code below::
 
     # Get refs
-    cLayer = qgis.utils.iface.activeLayer()
-    provider = cLayer.dataProvider()
-    # Create an empty list that will hold the column indexes for the columns we are interested in 
-    selectList = []
-    # For each column name we are interested in retreiving get its index and add it to the above selectList
-    for column in ['LEVEL', 'TYPE', 'NAME', 'SORTNAME']:
-        selectList.append(provider.fieldNameIndex(column))
+cLayer = qgis.utils.iface.activeLayer()
+provider = cLayer.dataProvider()
+# Create an empty list that will hold the column indexes for the columns we are interested in 
+selectList = []
+# For each column name we are interested in retreiving get its index and add it to the above selectList
+for column in ['PROVINCIA', 'ETTARI']:
+	selectList.append(provider.fieldNameIndex(column))
 
-    # Create a bounding box rectangle that we will use as a filter to only get features that intersect with it
-    rect = QgsRectangle(QgsPoint(0,0),QgsPoint(20, 34))
-    # The infamous select statement that queries our vector layer for all geometry, attributes indexes we passed and only the features that intersect our QgsRectangle
-    provider.select(selectList, rect, True, False)
-    feat = QgsFeature()
-    # walk through each feature of our select statement and get the attributes
-    while provider.nextFeature(feat):
-        # we get our dictionary of attribute index keys pointing to field values for this feature
-        map = feat.attributeMap()
-
-    # for each feature's attributes print out the value
-    for key, value in map.items():
-        print value.toString()
+# Create a bounding box rectangle that we will use as a filter to only get features that intersect with it
+rect = QgsRectangle(QgsPoint(1000000,1000000),QgsPoint(1650000,4820000))
+# The infamous select statement that queries our vector layer for all geometry, attributes indexes we passed and only the features that intersect our QgsRectangle
+provider.select(selectList, rect, True, False)
+feat = QgsFeature()
+# walk through each feature of our select statement and get the attributes
+while provider.nextFeature(feat):
+	# we get our dictionary of attribute index keys pointing to field values for this feature
+	attrs = feat.attributeMap()
+	# for each feature's attributes print out the value
+	for key, value in attrs.items():
+		print value.toString()
 
 \  **9.** \This next example is a little harder to understand. The point is to show you how to create dictionaries. We're going to create a table data structure -- a Python dictionary that represents a table in a database. The table is a dictionary where the keys are the featureIDs for each feature and the values will be nested dictionaries that have keys with column names and values with the column value. Reworking the above example gives us::
 

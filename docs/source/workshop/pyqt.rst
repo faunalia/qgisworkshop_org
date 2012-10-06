@@ -115,9 +115,9 @@ Now let's jump ahead briefly to peek at some PyQGIS commands (we'll go more in d
     144L
     >>> layer.srs()
     <qgis.core.QgsCoordinateReferenceSystem object at 0x3d10b78>
-    layer.crs().epsg()
+    >>> layer.crs().epsg()
     3003L
-    layer.crs().authid()
+    >>> layer.crs().authid()
     PyQt4.QtCore.QString(u'EPSG:3003')
     >>> layer.source()
     PyQt4.QtCore.QString(u'/home/gcorradini/DATA/SHAPES/world_borders/TM_WORLD_BORDERS-0.3_900913.shp')
@@ -134,5 +134,8 @@ See all those\  ``PyQt4.QtCore.QString`` \data types in action? This is grabbing
 
 To get help:
 
-    >>> help(layer.srs) #all the info about the function srs
-    >>> dir(layer.srs()) #only the methods present in the object returned by srs
+    >>> help(layer.srs)
+    #all the info about the function srs
+
+    >>> dir(layer.srs())
+    #only the methods present in the object returned by srs

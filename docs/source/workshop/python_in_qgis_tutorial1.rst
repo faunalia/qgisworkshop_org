@@ -2,7 +2,7 @@
 Tutorial #1 -- Installing QGIS Plugins
 ==============================================
 
-Let's review how we install Python plugins breifly. We'll also add the PyQGIS FOSS4G repository.
+Let's review how we install Python plugins briefly. We'll also add the PyQGIS FOSS4G repository.
 
 \  **1.** \On the QGIS menu bar click the\  ``Plugins > Fetch Python Plugins`` \item:
 
