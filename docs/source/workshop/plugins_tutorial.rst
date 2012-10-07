@@ -213,7 +213,7 @@ Notice that the Makefile is smart. It knows that there were only changes to the\
 \2) Implement Map Canvas Click Action 
 ----------------------------------------
 
-\  **1.** \Most of you will be more comfortable browsing and editing code in a text editor like gedit. Open gedit by clicking the notepad icon on the top menue bar of Ubuntu:
+\  **1.** \Most of you will be more comfortable browsing and editing code in a text editor like gedit. Open gedit or another text editor:
 
 .. image:: ../_static/open_gedit.png
     :scale: 100%
@@ -229,9 +229,9 @@ Notice that the Makefile is smart. It knows that there were only changes to the\
 
 * Another important thing to note is that our dialog is being created under the\  ``run()`` \method with these lines::
 
-    dlg = vector_selectbypointDialog()
+    self.dlg = vector_selectbypointDialog()
     # show the dialog
-    dlg.show()
+    self.dlg.show()
 
 * The\  ``vector_selectbypointDialog()`` \class that is being instatiated in that last code snippet was imported from our Python module dialog. If you were to open that Python module you'd notice it references the Python module that was compiled from our\  ``.ui`` \file --\  ``ui_vector_selectbypoint.py`` \. At the top of the file::
 
@@ -272,7 +272,7 @@ Notice that the Makefile is smart. It knows that there were only changes to the\
 A quick note. The function\  ``QObject.connect()`` \does the dirty work of registering our custom function\  ``handleMouseDown`` \(which hasn't been written yet) to the clickTool signal\  ``canvasClicked()`` \. It returns a boolean value declaring if the connection worked or not. We are catching that response and then outputing it to a message box so we can make sure the code we are writing is working as expected.
 
 
-\  **8.** \Now let's write our custom function that will get called whenever a mouse-down happens on the map canvas. Create this function anywhere below\  ``initGui()`` \.::
+\  **8.** \Now let's write our custom function that will get called whenever a mouse-down happens on the map canvas. Create this function anywhere below\  ``initGui()`` ::
 
     def handleMouseDown(self, point, button):
             QMessageBox.information( self.iface.mainWindow(),"Info", "X,Y = %s,%s" % (str(point.x()),str(point.y())) )
@@ -295,7 +295,7 @@ Testing Your Edits
 
     /home/qgis/natural_earth_50m/cultural/50m_cultural/50m_admin_0_countries.shp
 
-\  **2.** \Open the QGIS Plugin Manger. If our tool\  ``Select_VectorFeatures_By_PointClick`` \is already selected then uncheck it and close the QGIS Plugin Manager. Now reopen the QGIS Plugin manager and check our plugin again to add it to QGIS. This process ensures that we are getting the newest edits to our plugin loaded. 
+\  **2.** \Open the QGIS Plugin Manger. If our tool\  ``Select_VectorFeatures_By_PointClick`` \is already selected then uncheck it and close the QGIS Plugin Manager. Now reload the plugin, using the plugin ``Plugin reloader``. 
 
 \  **3.** \You should notice that as soon as you selected 'OK' on the QGIS Plugin Manager but before our plugin showed up on the menu bar that one of two things happened -- you either got an error or you saw a\  ``connect = True`` \info message box:
 
@@ -341,7 +341,7 @@ Some things to notice about this file:
 
     * This Python module subclasses a QtGui.QDialog class and wraps the compiled\  ``.ui`` \file\  ``ui_vector_selectbypoint.py`` \. Notice that we import that module at the beginning with these lines\  ``from ui_vector_selectbypoint import Ui_vector_selectbypoint`` \.
 
-    * The whole point of this class is to abstract the the setup of the UI so we don't have to deal with GUI setup in our main Python module. Now when we want to create our dialog we only need to create an instance of\  ``vector_selectbypointDialog`` \class and it handles all the GUI setup. 
+    * The whole point of this class is to abstract the setup of the UI so we don't have to deal with GUI setup in our main Python module. Now when we want to create our dialog we only need to create an instance of\  ``vector_selectbypointDialog`` \class and it handles all the GUI setup. 
 
     * This class is a good place to build dialog-specific properties such as getters and setters for input/output and things that will interact with buttons. 
 
@@ -367,31 +367,19 @@ Some things to notice about this file:
 
 \  **3.** \Now open\  ``vector_selectbypoint.py`` \and comment out our message box code::
 
-    #QMessageBox.information( self.iface.mainWindow(),"Info", "connect = %s"%str(result) )
+   #QMessageBox.information( self.iface.mainWindow(),"Info", "connect = %s"%str(result) )
+   #QMessageBox.information( self.iface.mainWindow(),"Info", "X,Y = %s,%s" % (str(point.x()),str(point.y())) )
 
-    #QMessageBox.information( self.iface.mainWindow(),"Info", "X,Y = %s,%s" % (str(point.x()),str(point.y())) )
-
-\  **4.** \Also in\  ``vector_selectbypoint.py`` \we'll want to move the creation of our dialog object from\  ``run()`` \and put it under the function\  ``__init__`` \so it can be accessible to all class functions::
-
-    # create our GUI dialog
-    self.dlg = vector_selectbypointDialog()
-
-\  **5.** \Now that the variable\  ``dlg`` \is a class instance variable in Python we have to make sure all references to it include\  ``self.`` \. So make sure all references to\  ``dlg`` \under the\  ``run()`` \function are changed::
-
-    # show the dialog
-    self.dlg.show()
-    result = self.dlg.exec_()
-
-\  **6.** \Finally, let's redirect our QgsPoint output to the TextBrowser with our helper properties. Note, before we set the TextBrowser value we are clearing the previous value. Under the function\  ``handleMouseDown`` \rewrite your code like this::
+\  **4.** \Let's redirect our QgsPoint output to the TextBrowser with our helper properties. Note, before we set the TextBrowser value we are clearing the previous value. Under the function\  ``handleMouseDown`` \rewrite your code like this::
 
     def handleMouseDown(self, point, button):
             self.dlg.clearTextBrowser()
             self.dlg.setTextBrowser( str(point.x()) + " , " +str(point.y()) )
             #QMessageBox.information( self.iface.mainWindow(),"Info", "X,Y = %s,%s" % (str(point.x()),str(point.y())) )
 
-\  **7.** \Our code should now look like\  `this <../_static/mapcanvas_click_3.py>`_
+\  **5.** \Our code should now look like\  `this <../_static/mapcanvas_click_3.py>`_
 
-\  **8.** \Save your changes. Close your files. Reload the plugin using the QGIS Plugin Manager (remember, if your plugin is already loaded -- checked -- in the plugin manager then you'll have to uncheck it, close the plugin manager, open it back up and recheck your plugin).  Now you should see your QgsPoint output in the TextBrowser on each click:
+\  **6.** \Save your changes. Close your files. Reload the plugin using the Plugin Reloader.  Now you should see your QgsPoint output in the TextBrowser on each click:
 
 .. image:: ../_static/qgspoint_to_gui.png
     :scale: 100%
