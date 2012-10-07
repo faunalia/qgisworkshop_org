@@ -537,7 +537,7 @@ The reason we want these to be class variables instead of function variables is 
         # current layer dataProvider ref (set in handleLayerChange)
         self.provider = None 
 
-\  **2.** \Now change all references in the module (most under\  ``selectFeature()``  \function) to be prefixed with\  ``self.`` \. 
+\  **2.** \Now change all references in the module (most under\  ``selectFeature()``  \function) to be prefixed with\  ``self.`` \ (see below). 
 
 
 \  **3.** \Next let's create a function called\  ``updateTextBrowser()`` \which will replace the function\  ``handleMouseDown()`` \that updates the TextBrowser with the point coordinates. Here is what that function will look like. See code comments to explain code::
@@ -561,7 +561,7 @@ The reason we want these to be class variables instead of function variables is 
                     self.dlg.setTextBrowser( str( attMap[nIndx].toString() ))
 
 
-\  **4.** \We need to somehow call our\  ``updateTextBrowser()`` \function. We could create another signal connection but we want to ensure the sequential order of events here -- meaning, we want to update the TextBrowser only after the\  ``selectFeature()`` \function executes. To accomplish this we will call\  ``updateTextBrowser()`` \at the very end of the\ ``selectFeature()`` \function by changing around a couple things like so::
+\  **4.** \We need to somehow call our\  ``updateTextBrowser()`` \function. We could create another signal connection but we want to ensure the sequential order of events here -- meaning, we want to update the TextBrowser only after the\  ``selectFeature()`` \function executes. To accomplish this we will call\  ``updateTextBrowser()`` \at the very end of the \ ``selectFeature()`` \function by changing around a couple things like so::
 
     if self.selectList:
             # make the actual selection 
@@ -603,7 +603,7 @@ Here's the whole\  ``selectFeature()`` \function so we can see the above in cont
     def run(self):
         # set the current layer immediately if it exists, otherwise it will be set on user selection
         self.cLayer = self.iface.mapCanvas().currentLayer()
-        if self.cLayer: self.provider = cLayer.dataProvider()
+        if self.cLayer: self.provider = self.cLayer.dataProvider()
         # make our clickTool the tool that we'll use for now 
         self.canvas.setMapTool(self.clickTool) 
 
