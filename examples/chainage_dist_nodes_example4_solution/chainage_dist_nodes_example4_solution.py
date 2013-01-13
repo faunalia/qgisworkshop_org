@@ -110,7 +110,7 @@ class chainage_dist_nodes_example4_solution:
     def run(self):
         # check to make sure we have a selected vector layer containing lines
         layer = self.iface.activeLayer()
-        if layer and layer.type() == QgsMapLayer.VectorLayer and layer.geometryType() == QGis.Line:
+        if layer and layer.type() == QgsMapLayer.VectorLayer and layer.geometryType() == QGis.Line and len(layer.selectedFeatures()) > 0:
 
             # ask the distance value to the user (default value is 100)
             (dist, ok) = QInputDialog.getDouble(self.iface.mainWindow(), "Chainage distance nodes", "Enter the distance between points", 100)

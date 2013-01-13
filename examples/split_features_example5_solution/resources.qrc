@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/split_features_example5_solution" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>

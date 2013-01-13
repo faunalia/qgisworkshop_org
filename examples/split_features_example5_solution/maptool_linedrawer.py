@@ -18,6 +18,10 @@ class LineDrawer(QgsMapToolEmitPoint):
         self.rubberBand.setColor( Qt.red )
         self.rubberBand.setWidth( 1 )
 
+
+    def clear(self):
+        self.rubberBand.reset( False )    # False = not a polygon = a line
+
     def delete(self):
         self.canvas.scene().removeItem( self.rubberBand )
 
@@ -28,7 +32,7 @@ class LineDrawer(QgsMapToolEmitPoint):
 
             # if it's the first left click, clear the rubberband 
             if not self.isDrawing:
-                self.rubberBand.reset( False )    # False = not a polygon = a line
+                self.clear()
 
             # we are drawing now
             self.isDrawing = True

@@ -109,18 +109,18 @@ Note that the above Python class is defining our dialog user interface. The foll
 Now let's jump ahead briefly to peek at some PyQGIS commands (we'll go more in depth later on this topic). What's interesting here is that we'll see PyQt objects at work in the background -- afterall, PyQGIS is build on PyQT bindings. This code is using the Python console to access the selected layer in my table of contents::
 
     >>> layer = qgis.utils.iface.activeLayer()
-    >>> layer.getLayerID()
+    >>> layer.id()
     PyQt4.QtCore.QString(u'TM_WORLD_BORDERS_0_3_90091320110704184935426')
-    >>> layer.featureCount()
-    144L
-    >>> layer.srs()
+    >>> layer.name()
+    PyQt4.QtCore.QString(u'TM_WORLD_BORDERS-0.3_900913')
+    >>> layer.crs()
     <qgis.core.QgsCoordinateReferenceSystem object at 0x3d10b78>
-    >>> layer.crs().epsg()
-    3003L
     >>> layer.crs().authid()
-    PyQt4.QtCore.QString(u'EPSG:3003')
+    PyQt4.QtCore.QString(u'epsg:900913')
     >>> layer.source()
     PyQt4.QtCore.QString(u'/home/gcorradini/DATA/SHAPES/world_borders/TM_WORLD_BORDERS-0.3_900913.shp')
+    >>> layer.featureCount()
+    144L
     >>> layer.wkbType()
     3
     >>> # 3 == MultiPolygon type
